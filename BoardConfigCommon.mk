@@ -47,8 +47,9 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=flo user_
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Try to build the kernel
-TARGET_KERNEL_SOURCE := kernel/google/msm
-TARGET_KERNEL_CONFIG := flo_defconfig
+#TARGET_KERNEL_SOURCE := kernel/google/msm
+#TARGET_KERNEL_CONFIG := flo_defconfig
+TARGET_PREBUILT_KERNEL := device/asus/flo/kernel
 
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_LEGACY_ALSA_AUDIO:= false
@@ -85,7 +86,7 @@ TARGET_USES_OVERLAY := true
 TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TARGET_RECOVERY_UI_LIB := librecovery_ui_flo
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -141,6 +142,7 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
 TW_CUSTOM_POWER_BUTTON := 107
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.591617/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
+TW_NO_SCREEN_BLANK := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 HAVE_SELINUX := true
 

@@ -128,8 +128,11 @@ on boot
 
 # Assign TCP buffer thresholds to be ceiling value of technology maximums
 # Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max  1220608
-    write /proc/sys/net/core/wmem_max  1220608
+    write /proc/sys/net/core/rmem_max  2097152
+    write /proc/sys/net/core/wmem_max  2097152
+
+# Tune buffersize for higher Miracast throughput
+    setprop net.tcp.buffersize.wifi 524288,1048576,2560000,524288,1048576,2560000
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -432,6 +435,16 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service dhcpcd_eth0 /system/bin/dhcpcd -ABDKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
@@ -490,7 +503,10 @@ service diag_mdlog /system/bin/logwrapper /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
-
+service qrngd /system/bin/qrngd -f
+    class main
+    user root
+    group root
 
 # on property:gsm.sim.state=READY
 #    start diag_mdlog

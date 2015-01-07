@@ -22,7 +22,7 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.flo
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/asus/flo
 
-TARGET_RECOVERY_FSTAB = device/asus/flo/fstab.flo
+TARGET_RECOVERY_FSTAB = device/asus/flo/twrp.fstab
 
 -include vendor/asus/flo/BoardConfigVendor.mk
 include device/asus/flo/BoardConfigCommon.mk

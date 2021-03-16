@@ -162,4 +162,4 @@ TW_CUSTOM_POWER_BUTTON := 107
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.591617/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_NO_SCREEN_BLANK := true
-TW_EXCLUDE_SUPERSU := true
+TW_EXCLUDE_BASH := true
